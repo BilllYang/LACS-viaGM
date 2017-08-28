@@ -1,0 +1,99 @@
+<html>
+    <!DOCTYPE html>
+<html>
+<style>
+  body {
+    background: url("C:/Users/user/Desktop/vacation1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding-top: 40px;
+  }
+  #googleMap {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    width: 600px;
+    height: 550px;
+  }
+  #getlocbutton {
+    position: fixed;
+    top: 650px;
+    height: 100px;
+  }
+</style>
+<body >
+
+<h1>My First Google Map</h1>
+search: <input type="text" name="FirstName" id = search value="請輸入查詢字串"><br><button onclick="myMap()">搜尋</button>
+<div id="googleMap"></div>
+<div id="getlocbutton">
+  <button onclick="getLocation()">取得所在地</button>
+</div>
+<script>
+var lAT;
+var lNG;
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(getPosition);
+    } else { 
+        alert() = "Geolocation is not supported by this browser.";
+    }
+}
+function getPosition(position){
+    lAT = position.coords.latitude;
+    lNG = position.coords.longitude;
+    alert(lAT +"經緯"+lNG);
+}
+function myMap(){
+var local = new google.maps.LatLng(parseFloat(lAT), parseFloat(lNG));
+var search_text = document.getElementById("search").value;
+mapProp = new google.maps.Map(document.getElementById("googleMap"), {
+          center: local,
+          zoom: 15
+});
+
+service = new google.maps.places.PlacesService(mapProp);
+
+var request= {
+    location: local,
+    radius: '10',
+    query: search_text
+};
+    service.textSearch(request, callback);
+
+
+function callback(results, status) {
+  if (status == google.maps.places.PlacesServiceStatus.OK) {
+    for (var i = 0; i < results.length; i++) {
+      var place = results[i];
+    }
+    results.sort(function(a,b){return b.rating - a.rating;});
+    for(var j = 0; j < 10; j++){
+          createMarker(results[j]);
+          alert(results[j].name + " " + results[j].rating);
+    }
+    
+  }
+}
+ function createMarker(place) {
+        var infowindow;
+        infowindow = new google.maps.InfoWindow();
+        var placeLoc = place.geometry.location;
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent(place.name);
+          infowindow.open(map, this);
+        });
+      }
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+}
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAIlgABKI1bK5mV8qIdqSFYAdsGNCLj9-o&libraries=places&callback=myMap"></script>
+</body>
+</html>
