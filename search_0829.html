@@ -11,8 +11,8 @@
   }
   #googleMap {
     position: fixed;
-    top: -100px;
-    left: 50%;
+    top: -350px;
+    left: 55%;
     width: 600px;
     height: 550px;
   }
@@ -24,6 +24,9 @@
   #photoblock {
     
   }
+  <!-- 
+  BODY{overflow-y:hidden;} 
+  -->
 </style>
 <body >
 
@@ -31,7 +34,7 @@
 <h2 id="wtf">HIHI</h2>
 search: <input type="text" name="FirstName" id = search value="請輸入查詢字串"><br><button onclick="myMap()">搜尋</button>
 <div id="photoblock">
-  <img id="ph1" width="200" height="200"></img>
+  <img id="ph1" width= "450" height="300"></img>
 </div>
 <div id="googleMap"></div>
 
@@ -58,6 +61,7 @@ function myMap(){
   var local = new google.maps.LatLng(parseFloat(lAT), parseFloat(lNG));
   var search_text = document.getElementById("search").value;
   var gallery = [];
+  var placename = [];
   mapProp = new google.maps.Map(document.getElementById("googleMap"), {
     center: local,
     zoom: 15
@@ -83,8 +87,10 @@ function myMap(){
         createMarker(results[j]);
         createPhotoMarker(results[j]);
         alert(results[j].name + " " + results[j].rating);
+        placename.push(results[j].name);
       }
       document.getElementById("ph1").src = gallery[0];
+
     }
   }
  function createMarker(place) {
@@ -99,6 +105,9 @@ function myMap(){
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.setContent(place.name);
           infowindow.open(map, this);
+          for(var i=0; i<5; i++){
+            if(placename[i]==place.name)document.getElementById("ph1").src = gallery[i];
+          }
         });
   }
   function createPhotoMarker(place){
@@ -106,7 +115,8 @@ function myMap(){
     if (!photoshow) {
       return;
     }
-    gallery.push(photoshow[0].getUrl({'maxWidth': 200, 'maxHeight': 200}));
+    gallery.push(photoshow[0].getUrl({'maxWidth': 600, 'maxHeight': 400}));
+
     document.getElementById("wtf").innerHTML = "WTF!!!!!!!!";
     //document.getElementById("ph1").src = photoshow[0].getUrl({'maxWidth': 200, 'maxHeight': 200});
     
