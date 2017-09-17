@@ -54,8 +54,7 @@ var coordinate_rest = []; //lat & lng
 var distanceArr = [];
 var requestArr = [];
 var readcount=0;
-
-localStorage.setItem("key", 2);
+var resultcnt=0;
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -136,6 +135,7 @@ function myMap(){
       }
       document.getElementById("ph1").src = gallery[0];
       calcRoute();
+
       //document.getElementById("wtf").innerHTML += placename[0]+placename[1]+placename[2]+placename[3]+placename[4];
     }
   }
@@ -151,7 +151,11 @@ function createPhotoMarker(place){
 }
 
 
+function doCalulationAndResult(){
+  var id_1 = document.getElementById("wtf");
+  id_1.insertAdjacentText("beforeEnd", distanceArr[resultcnt++].txt + "!!BREAK!!");
 
+}
 
   
 
@@ -178,12 +182,10 @@ function calcRoute() {
     }
   }
 
-  processRequests();
-  pauseBrowser(6000);
-  console.log("finish!!");
-  var id_1 = document.getElementById("wtf");
-  for(var k=0; k<10; k++)id_1.insertAdjacentText("beforeEnd", distanceArr[k].txt + "!!BREAK!!");
-
+  processRequests(doCalulationAndResult);
+  //pauseBrowser(6000);
+  //console.log("finish!!");
+  
 
   //console.log(distanceArr.length);
 }
@@ -197,7 +199,7 @@ function pauseBrowser(millis) {
 }
 
 
-function processRequests(){
+function processRequests(cb){
   var i=0;
   var directionsService = new google.maps.DirectionsService();
   function submitRequest(indexi, indexj, callback){
@@ -215,6 +217,7 @@ function processRequests(){
         }
 
         callback(indexi, indexj, totalDistance);
+        cb & cb();
         //var fuckU = distanceArr[0].dis instanceof Number;
         //document.getElementById("wtf").innerHTML = totalDistance;
 
@@ -230,7 +233,7 @@ function processRequests(){
     
   }
 
-var countreq=0;
+//var countreq=0;
 
   function nextRequest(){
     
@@ -239,18 +242,18 @@ var countreq=0;
       return;
     }
     submitRequest(requestArr[i].indexi, requestArr[i].indexj,function(indexi, indexj, pushitem){
-      countreq++;
+      //countreq++;
       console.log(indexi + "," + indexj + "," + pushitem + "XXX");
         distanceArr.push({"dis":Number(pushitem), "indexi":indexi, "indexj":indexj, "txt": placename[indexi] + " to " +  placename[indexj] + ":" + Number(pushitem)/1000 + "km" + "-----"});
-        console.log(countreq);
+        //console.log(countreq);
         console.log("--->" + distanceArr[i].indexi + "," + distanceArr[i].indexj + "," + distanceArr[i].dis + "XXX");
-        localStorage.setItem("key", 1);
+        //localStorage.setItem("key", 1);
     });
     //console.log("GAN" + distanceArr[i].indexi + "," + distanceArr[i].indexj + "," + distanceArr[i].dis + "XXX");
   }
 
   submitRequest(requestArr[i].indexi, requestArr[i].indexj,function(indexi, indexj, pushitem){
-    countreq++;
+    //countreq++;
         distanceArr.push({"dis":Number(pushitem), "indexi":indexi, "indexj":indexj, "txt": placename[indexi] + " to " +  placename[indexj] + ":" + Number(pushitem)/1000 + "km" + "-----"});
     });
 
