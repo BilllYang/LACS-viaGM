@@ -1,0 +1,119 @@
+<html>
+    <!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+<script>
+//distanceArr: dis, indexi, indexj
+
+
+
+var distanceArr = [];
+distanceArr.push({indexi:"肯德基", indexj:"成大", dis:Number(7)});
+distanceArr.push({indexi:"肯德基", indexj:"成大醫院", dis:Number(9)});
+distanceArr.push({indexi:"肯德基", indexj:"我家", dis:Number(14)});
+distanceArr.push({indexi:"成大", indexj:"成大醫院", dis:Number(10)});
+distanceArr.push({indexi:"成大醫院", indexj:"成大", dis:Number(10)});
+distanceArr.push({indexi:"我家", indexj:"成大醫院", dis:Number(2)});
+distanceArr.push({indexi:"成大醫院", indexj:"我家", dis:Number(2)});
+distanceArr.push({indexi:"成大", indexj:"火車站", dis:Number(15)});
+distanceArr.push({indexi:"火車站", indexj:"成大", dis:Number(15)});
+distanceArr.push({indexi:"火車站", indexj:"成大醫院", dis:Number(11)});
+distanceArr.push({indexi:"成大醫院", indexj:"火車站", dis:Number(11)});
+distanceArr.push({indexi:"大碩", indexj:"火車站", dis:Number(6)});
+distanceArr.push({indexi:"火車站", indexj:"大碩", dis:Number(6)});
+distanceArr.push({indexi:"我家", indexj:"大碩", dis:Number(9)});
+distanceArr.push({indexi:"大碩", indexj:"我家", dis:Number(9)});
+distanceArr.push({indexi:"肯德基", indexj:"大碩", dis:Number(22)});
+distanceArr.push({indexi:"成大醫院", indexj:"大碩", dis:Number(12)});
+distanceArr.push({indexi:"成大", indexj:"大碩", dis:Number(17)});
+
+
+
+
+
+
+var d = [];
+var parent = [];
+var path =[];
+var distanceArr2 = distanceArr.slice(0);
+bellman_javascript("肯德基", "大碩");
+
+
+console.log(path);
+
+
+
+function bellman_javascript(source, dest){
+
+	for(var j=0; j<distanceArr2.length; j++){
+		d[distanceArr2[j].indexi] = 1e9;
+		d[distanceArr2[j].indexj] = 1e9;
+	}
+	//console.log(distanceArr.length);
+	d[source]=0;
+	parent[source] = source;
+
+
+
+
+	for(var k=0; k<2; k++){
+		for(var i=0; i<distanceArr2.length; i++){
+			if(distanceArr2[i].indexj === dest)continue;
+			else if(d[distanceArr2[i].indexi] + distanceArr2[i].dis < d[distanceArr2[i].indexj]){
+				d[distanceArr2[i].indexj] = d[distanceArr2[i].indexi] + distanceArr2[i].dis;
+				parent[distanceArr2[i].indexj] = distanceArr2[i].indexi;
+				console.log(distanceArr2[i].dis);
+			}
+		}
+	}
+	console.log(d);
+	var min = 1e9;
+	var item = -1;
+	var record = "none";
+	for(var key in d){
+
+		//console.log(parent[key]);
+		for(var i = 0; i<distanceArr2.length; i++){
+			if(distanceArr2[i].indexi === key && distanceArr2[i].indexj === dest){
+				item = i;
+				//console.log(item);
+				break;
+			}
+		}
+		
+		if(item!=- 1 && d[key] + distanceArr2[item].dis < min){
+			min = d[key] + distanceArr2[item].dis;
+			record = key;
+			d[dest] = d[key] + distanceArr2[item].dis;
+			//console.log(record);
+		}
+		
+	}
+	//console.log(record);
+
+	findpath(record);
+
+	function findpath(record){
+		if(record != parent[record]){
+			findpath(parent[record]);
+		}
+		path.push(record);
+	}
+	path.push(dest);
+	//path has been recorded
+}
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
