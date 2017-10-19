@@ -1,0 +1,201 @@
+<html>
+    <!DOCTYPE html>
+<html>
+
+<body>
+
+
+
+<script>
+//distanceArr: dis, indexi, indexj
+
+
+
+var distanceArr = [];
+distanceArr.push({indexi:"肯德基", indexj:"成大", dis:Number(7)});
+distanceArr.push({indexi:"肯德基", indexj:"成大醫院", dis:Number(9)});
+distanceArr.push({indexi:"肯德基", indexj:"我家", dis:Number(14)});
+distanceArr.push({indexi:"成大", indexj:"成大醫院", dis:Number(10)});
+distanceArr.push({indexi:"成大醫院", indexj:"成大", dis:Number(10)});
+distanceArr.push({indexi:"我家", indexj:"成大醫院", dis:Number(2)});
+distanceArr.push({indexi:"成大醫院", indexj:"我家", dis:Number(2)});
+distanceArr.push({indexi:"成大", indexj:"火車站", dis:Number(15)});
+distanceArr.push({indexi:"火車站", indexj:"成大", dis:Number(15)});
+distanceArr.push({indexi:"火車站", indexj:"成大醫院", dis:Number(11)});
+distanceArr.push({indexi:"成大醫院", indexj:"火車站", dis:Number(11)});
+distanceArr.push({indexi:"大碩", indexj:"火車站", dis:Number(6)});
+distanceArr.push({indexi:"火車站", indexj:"大碩", dis:Number(6)});
+distanceArr.push({indexi:"我家", indexj:"大碩", dis:Number(9)});
+distanceArr.push({indexi:"大碩", indexj:"我家", dis:Number(9)});
+distanceArr.push({indexi:"肯德基", indexj:"大碩", dis:Number(22)});
+distanceArr.push({indexi:"成大醫院", indexj:"大碩", dis:Number(12)});
+distanceArr.push({indexi:"成大", indexj:"大碩", dis:Number(17)});
+
+
+
+
+
+
+
+var distanceArr2 = distanceArr.slice(0);
+dp_javascript("肯德基", "大碩");
+
+
+//console.log(path);
+
+
+
+function dp_javascript(source, dest){
+
+	
+	var d = [];
+	
+	//first relaxation
+	//init
+	for(var i=0; i<distanceArr2.length; i++){
+		d[distanceArr2[i].indexi]= {};
+		for(var j=0; j<distanceArr2.length; j++){
+			if(distanceArr2[j].indexi != distanceArr2[i].indexi){
+				d[distanceArr2[i].indexi][distanceArr2[j].indexi] = {};
+				d[distanceArr2[i].indexi][distanceArr2[j].indexi][0] = 1e9;
+				d[distanceArr2[i].indexi][distanceArr2[j].indexi][1] = 1e9;
+				d[distanceArr2[i].indexi][distanceArr2[j].indexi][2] = 1e9;
+			}
+			
+		}
+	}
+
+	var pathnode = {};
+
+	d[dest] = {};
+
+	for(var i=0; i<distanceArr2.length; i++){
+		if(distanceArr2[i].indexi != dest){
+			d[distanceArr2[i].indexi][distanceArr2[i].indexj][0] = distanceArr2[i].dis;
+			pathnode[distanceArr2[i].indexj] = {};
+			for(var j in d){
+				pathnode[distanceArr2[i].indexj][j] = [];
+				if(j === distanceArr2[i].indexi) pathnode[distanceArr2[i].indexj][j][0] = distanceArr2[i].indexi;
+			}
+			
+		}
+		
+		//d[distanceArr2[i].indexj] = d[distanceArr2[i].indexi] + distanceArr2[i].dis;
+		//parent[distanceArr2[i].indexj] = distanceArr2[i].indexi;
+	}
+	console.log(d);
+	//second & third relaxation using dp
+
+	var firstnode = {};
+	var secondnode = {};
+	var path = [];
+
+
+	var cnt = 0;
+	while(cnt<2){
+		cnt++;
+		for(var i in d){
+			if(i === dest)continue;
+			for(var j in d){
+				if(i === j)continue;
+				//console.log(i + j + k);
+				for(var k in d){
+					//console.log(d[k][j][0]);
+					//console.log(i + j + k);
+					if(k != dest && k != i && k != j && d[k][j][cnt-1]!=1e9){
+						//console.log(i + j + k);
+						var temp = 9999999999;
+						for(var m =0; m<distanceArr2.length; m++){
+							if(distanceArr2[m].indexi === i && distanceArr2[m].indexj === k){
+								temp = distanceArr2[m].dis;
+								break;
+							}
+						}
+						if(temp + d[k][j][cnt-1] < d[i][j][cnt]){
+							d[i][j][cnt] = temp + d[k][j][cnt-1];
+							if(cnt===1){
+								pathnode[j][i][1] = [];
+								while(pathnode[j][i][1].length!=0)pathnode[j][i][1].pop();
+								pathnode[j][i][1].push(k);
+								pathnode[j][i][1].push(i);
+							}
+							else{
+								pathnode[j][i][2] = [];
+								while(pathnode[j][i][2].length!=0)pathnode[j][i][2].pop();
+								pathnode[j][i][2].push(j);
+								pathnode[j][i][2].push.apply(pathnode[j][i][2], pathnode[j][k][1]);
+								pathnode[j][i][2].push(i);
+							}
+						}
+					}
+				}
+			}
+		}
+
+	}
+	
+
+	console.log(d);
+	console.log(pathnode);
+
+	//compute result
+
+
+	/*for(var k=0; k<2; k++){
+		for(var i=0; i<distanceArr2.length; i++){
+			if(distanceArr2[i].indexj === dest)continue;
+			else if(d[distanceArr2[i].indexi] + distanceArr2[i].dis < d[distanceArr2[i].indexj]){
+				d[distanceArr2[i].indexj] = d[distanceArr2[i].indexi] + distanceArr2[i].dis;
+				parent[distanceArr2[i].indexj] = distanceArr2[i].indexi;
+				console.log(distanceArr2[i].dis);
+			}
+		}
+	}
+	console.log(d);
+	var min = 1e9;
+	var item = -1;
+	var record = "none";
+	for(var key in d){
+
+		//console.log(parent[key]);
+		for(var i = 0; i<distanceArr2.length; i++){
+			if(distanceArr2[i].indexi === key && distanceArr2[i].indexj === dest){
+				item = i;
+				//console.log(item);
+				break;
+			}
+		}
+		
+		if(item!=- 1 && d[key] + distanceArr2[item].dis < min){
+			min = d[key] + distanceArr2[item].dis;
+			record = key;
+			d[dest] = d[key] + distanceArr2[item].dis;
+			//console.log(record);
+		}
+		
+	}
+	//console.log(record);
+
+	findpath(record);
+
+	function findpath(record){
+		if(record != parent[record]){
+			findpath(parent[record]);
+		}
+		path.push(record);
+	}
+	path.push(dest);
+	//path has been recorded*/
+	console.log(pathnode[dest][source][2]);
+}
+
+
+
+</script>
+
+
+
+
+
+</body>
+</html>
