@@ -179,19 +179,6 @@ search: <input type="text" name="FirstName" id = search value="請輸入查詢�
 </div>
 
 
-<?php
-$handle = fopen('/LACS-viaGM/readfile.txt', "r");
-$contents = '';
-if ($handle) {
-    while (!feof($handle)) {
-        $contents = fgets($handle, 10);
-        echo $contents;
-    }
-    fclose($handle);
-}
-?>
-
-
 <script>
 var myMap_cnt = 0;
 var lAT;
@@ -205,12 +192,24 @@ var requestArr = [];
 var meal = [];
 var readcount=0;
 var resultcnt=0;
-var file = "recipe.txt"
 
 //console.log(breakfast);
 //console.log(lunch);
 //console.log(dinner);
 
+/*var BLD = "<?php
+$handle = fopen('/LACS-viaGM/recipe.txt', "r");
+$contents = '';
+if ($handle) {
+    while (!feof($handle)) {
+        $contents = fgets($handle, 10);
+        echo $contents;
+    }
+    fclose($handle);
+}
+?>";*/
+
+//console.log(BLD);
 
 function getLocation() {
     if (navigator.geolocation) {
@@ -227,7 +226,7 @@ function getPosition(position){
 }
 
 function myMap(botton_id){
-  meal.push(document.getElementById(botton_id).innerHTML);
+  //meal.push(document.getElementById(botton_id).innerHTML);
   myMap_cnt++;
   var local = new google.maps.LatLng(parseFloat(lAT), parseFloat(lNG));
   var search_text = document.getElementById("search").value;
