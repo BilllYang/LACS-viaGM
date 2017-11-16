@@ -209,7 +209,7 @@ var resultcnt=0;
 //console.log(breakfast);
 //console.log(lunch);
 //console.log(dinner);
-BLD = BLD.split("*");
+BLD = BLD.split("|");
 var breakfast = BLD[0];
 var lunch = BLD[1];
 var dinner = BLD[2];
