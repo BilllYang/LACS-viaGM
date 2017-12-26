@@ -183,7 +183,18 @@
         <div class="btn btn--border btn--primary btn--animated" onclick = "getLocation()"><strong>取得所在地</div>
 </div>
 <?php
-  $file_content = file_get_contents("recipe.txt");
+  $a = $_POST['a'];
+  $b = $_POST['b'];
+  $c = $_POST['c'];
+
+  $myfile = fopen("result.txt", "w"); 
+  fwrite($myfile,$a);
+  fwrite($myfile,"|");
+  fwrite($myfile,$b);
+  fwrite($myfile,"|");
+  fwrite($myfile,$c);
+  fclose($myfile);
+  $file_content = file_get_contents("result.txt");
 ?>
 <script>
 var BLD = '<?php echo $file_content ;?>';
