@@ -255,8 +255,6 @@
   fwrite($myfile,$objective);
   fclose($myfile);
   $file_content = file_get_contents("recipe.txt");
-  $answer = shell_exec("a.exe a b");
-
 ?>
 <script>
 var BLD = '<?php echo $file_content ;?>';

@@ -2,7 +2,7 @@
     <!DOCTYPE html>
 <html>
 <body background="map.jpg">
-<form action="/project/search_1227_ui.php" method="POST">
+<form action="/project/solve" method="POST">
 cost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name = "Ycost"><select name="cost">
 　<option value="0">忽略</option>
 　<option value="1">至少</option>
