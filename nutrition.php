@@ -84,7 +84,7 @@ objective: <select name="objective">
   fwrite($myfile,",");
   fwrite($myfile,$c);
   fclose($myfile);
-  $answer = shell_exec("a.exe a b");
+  $answer = shell_exec("./nutritionTable in out");
 ?>
 <script type="text/javascript">
 	function to_search() {
