@@ -1,5 +1,15 @@
+<html>
+    <!DOCTYPE html>
+<html>
+<body background="map.jpg">
+<form action="/project/search_1227_ui.php" method="POST"> 
+<input type="submit" value="Submit" onclick="to_search()">
+</form>
+</body>
+</html>
 <?php
-$Ycost = $_POST['Ycost'];
+  $objective = $_POST['objective'];
+  $Ycost = $_POST['Ycost'];
   $Ycarlories = $_POST['Ycarlories'];
   $Yproteins = $_POST['Yproteins'];
   $Ycarbohydrates = $_POST['Ycarbohydrates'];
@@ -21,13 +31,10 @@ $Ycost = $_POST['Ycost'];
   $sodium = $_POST['sodium']; 
   $fiber = $_POST['fiber'];
   $vitaminC = $_POST['vitaminC'];
-  $objective = $_POST['objective'];
   
-  if(file_exists('out.txt')){ 
-            unlink('out.txt');//將檔案刪除
-        }
-
-  $myfile = fopen("out.txt", "w"); 
+  $myfile = fopen("table.txt", "w"); 
+  fwrite($myfile,$objective);
+  fwrite($myfile,"\r\n");
   fwrite($myfile,$Ycost);
   fwrite($myfile,"\r\n");
   fwrite($myfile,$cost);
@@ -72,11 +79,10 @@ $Ycost = $_POST['Ycost'];
   fwrite($myfile,"\r\n");
   fwrite($myfile,$vitaminC);
   fwrite($myfile,"\r\n");
-  fwrite($myfile,$objective);
   fclose($myfile);
   $path = getenv("LD_LIBRARY_PATH");
   $new = "/opt/gurobi752/linux64/lib";
   $new .= ":$path";
   putenv("LD_LIBRARY_PATH=$new");
-  $answer = shell_exec("./solveDiet out");
+  $answer = shell_exec("./solveDiet table.txt");
 ?>

@@ -23,12 +23,12 @@
   $neutrition = $a.$neutrition;
   $a = $a.$txt;
 
-  $myfile = fopen($a, "w"); 
+  $myfile = fopen("userInfo.txt", "w"); 
   fwrite($myfile,$b);
   fwrite($myfile,",");
   fwrite($myfile,$c);
   fclose($myfile);
-  $answer = shell_exec("./nutritionTable in out");
+  $answer = shell_exec("./nutritionTable userInfo.txt table.txt");
 ?>
 <script type="text/javascript">
 
