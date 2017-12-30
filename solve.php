@@ -1,12 +1,3 @@
-<html>
-    <!DOCTYPE html>
-<html>
-<body background="map.jpg">
-<form action="/project/search_1227_ui.php" method="POST"> 
-<input type="submit" value="Submit" onclick="to_search()">
-</form>
-</body>
-</html>
 <?php
 $Ycost = $_POST['Ycost'];
   $Ycarlories = $_POST['Ycarlories'];
