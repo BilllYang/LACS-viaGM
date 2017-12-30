@@ -2,7 +2,7 @@
     <!DOCTYPE html>
 <html>
 <body background="map.jpg">
-<form action="/project/neutrition.php" method="POST">
+<form action="/project/to_check.php" method="POST">
 暱稱: <input type="text" name="a"><br>
 性別: <input type="text" name="b"><br>
 年齡: <input type="text" name="c"><br> 
