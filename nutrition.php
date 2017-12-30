@@ -3,75 +3,37 @@
 <html>
 <body background="map.jpg">
 <form action="/project/solve.php" method="POST">
-cost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name = "Ycost"><select name="cost">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-carlories&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ycarlories"><select name="carlories">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-proteins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Yproteins"><select name="proteins">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-carbohydrates:<input type="text" name="Ycarbohydrates"><select name="carbohydrates">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-vitamin A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="YvitaminA"><select name="vitaminA">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br> 
-calcium &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ycalcium"><select name="calcium">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-fat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Yfat"><select name="fat">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-cholesterol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ycholesterol"><select name="cholesterol">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br> 
-sodium&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ysodium"><select name="sodium">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-fiber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Yfiber"><select name="fiber">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select><br><br>
-vitamin C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="YvitaminC"><select name="vitaminC">
-　<option value="0">忽略</option>
-　<option value="1">至少</option>
-　<option value="2">至多</option>
-</select>
+cost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name = "Ycost" value = "<?php     $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10); echo $contents; ?>"><input type = "text" name="cost" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); echo $contents; ?>" size="1">(0 = ignore 1 = at least 2 = at most)
+<br><br>
+carlories&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ycarlories" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="carlories" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br>
+proteins&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Yproteins" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="proteins" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br>
+carbohydrates:<input type="text" name="Ycarbohydrates" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="carbohydrates" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br>
+vitamin A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="YvitaminA" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="vitaminA" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br> 
+calcium &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ycalcium" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="calcium" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10); echo $contents; ?>" size="1">
+<br><br>
+fat&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Yfat" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="fat" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br>
+cholesterol&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ycholesterol" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="cholesterol" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br> 
+sodium&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ysodium" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="sodium" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br>
+fiber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Yfiber" value = "<?php $myfile = fopen('out.txt', 'r');$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="fiber" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+<br><br>
+vitamin C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="YvitaminC" value = "<?php $myfile = fopen('out.txt', 'r');      $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="vitaminC" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
+
 <br>
 <br>
 <br>
-objective: <select name="objective">
-　<option value="0">cost</option>
-　<option value="1">carlories</option>
-　<option value="2">carbohydrate</option>
-  <option value="3">protein/(fat+1)</option>
-  <option value="4">protein</option>
-</select><br>
+objective: <input type = "text" name="objective" value = "<?php $myfile = fopen('out.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size = 1;>
+<br>
 <input type="submit" value="Submit">
 </form>
 <?php
-  $a = $_POST['a'];
+  /*$a = $_POST['a'];
   $b = $_POST['b'];
   $c = $_POST['c'];
   $txt = ".txt";
@@ -84,7 +46,7 @@ objective: <select name="objective">
   fwrite($myfile,",");
   fwrite($myfile,$c);
   fclose($myfile);
-  $answer = shell_exec("./nutritionTable in out");
+  $answer = shell_exec("./nutritionTable in out");*/
 ?>
 <script type="text/javascript">
 	function to_search() {
