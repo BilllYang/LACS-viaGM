@@ -2,7 +2,7 @@
     <!DOCTYPE html>
 <html>
 <body background="map.jpg">
-<form action="/project/search_1227_ui.php" method="POST"> 
+<form action="/project/search_0101_ui.php" method="POST"> 
 <input type="submit" value="Submit" onclick="to_search()">
 </form>
 </body>
