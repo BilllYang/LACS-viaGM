@@ -27,7 +27,6 @@ button {
   color: #000;
   text-decoration: none;
   padding-bottom: 3px;
-  top:90;
   border-radius: 5px;
   box-shadow: 0 2px 0 #000;
   transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
