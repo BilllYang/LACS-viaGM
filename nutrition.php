@@ -34,9 +34,9 @@ button {
 }
 </style>
 <form action="/project/solve.php" method="POST">
-objective: <input type = "text" name="objective" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10); echo  $contents; ?>" size = 1;>
+objective&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type = "text" name="objective" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10); echo  $contents; ?>" size = 1;>(0=cost 1=calories 2=carbohydratye 3=protein/(fat+1) 4=protein)
 <br><br>
-cost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name = "Ycost" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10); $contents = fgets($myfile, 10); echo $contents; ?>"><input type = "text" name="cost" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10); $contents = fgets($myfile, 10); $contents = fgets($myfile, 10); echo $contents; ?>" size="1">(0 = ignore 1 = at least 2 = at most)
+cost&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name = "Ycost" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10); $contents = fgets($myfile, 10); echo $contents; ?>"><input type = "text" name="cost" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10); $contents = fgets($myfile, 10); $contents = fgets($myfile, 10); echo $contents; ?>" size="1">(0 = ignore 1 = at least 2 = at most)
 <br><br>
 carlories(kcal)&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Ycarlories" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents;?>"><input type = "text" name="carlories" value = "<?php $myfile = fopen('table.txt', 'r'); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10); $contents = fgets($myfile, 10);$contents = fgets($myfile, 10);$contents = fgets($myfile, 10);echo $contents; ?>" size="1">
 <br><br>
