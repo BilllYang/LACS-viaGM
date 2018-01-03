@@ -1,12 +1,3 @@
-<html>
-    <!DOCTYPE html>
-<html>
-<body background="map.jpg">
-<form action="/project/search_0101_ui.php" method="POST"> 
-<input type="submit" value="Submit" onclick="to_search()">
-</form>
-</body>
-</html>
 <?php
   $objective = $_POST['objective'];
   $Ycost = $_POST['Ycost'];
@@ -31,7 +22,12 @@
   $sodium = $_POST['sodium']; 
   $fiber = $_POST['fiber'];
   $vitaminC = $_POST['vitaminC'];
+ 
   
+  if(file_exists('out.txt')){ 
+            unlink('table.txt');//將檔案刪除
+        }
+
   $myfile = fopen("table.txt", "w"); 
   fwrite($myfile,$objective);
   fwrite($myfile,"\r\n");
@@ -78,11 +74,13 @@
   fwrite($myfile,$YvitaminC);
   fwrite($myfile,"\r\n");
   fwrite($myfile,$vitaminC);
-  fwrite($myfile,"\r\n");
+ 
+  
   fclose($myfile);
   $path = getenv("LD_LIBRARY_PATH");
   $new = "/opt/gurobi752/linux64/lib";
   $new .= ":$path";
   putenv("LD_LIBRARY_PATH=$new");
   $answer = shell_exec("./solveDiet table.txt");
+  header("Location: /project/search_0101_ui.php");
 ?>
